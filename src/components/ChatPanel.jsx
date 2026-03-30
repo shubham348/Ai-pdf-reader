@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import CollapsiblePanel from './CollapsiblePanel'
+import { getAskUrl } from '../lib/api'
 
 function ChatPanel({ chatHistory, context, onChatHistoryChange, onOpenChange, open }) {
   const [question, setQuestion] = useState('')
@@ -21,7 +22,7 @@ function ChatPanel({ chatHistory, context, onChatHistoryChange, onOpenChange, op
     setChatLoading(true)
 
     try {
-      const response = await fetch('http://localhost:5000/ask', {
+      const response = await fetch(getAskUrl(), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

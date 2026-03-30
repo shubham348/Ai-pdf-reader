@@ -3,6 +3,7 @@ import './App.css'
 import ChatPanel from './components/ChatPanel'
 import PdfViewer from './components/PdfViewer'
 import SummaryPanel from './components/SummaryPanel'
+import { getAskUrl } from './lib/api'
 import pdfjsLib from './lib/pdfjs'
 
 function App() {
@@ -76,7 +77,7 @@ function App() {
 
       const extractedText = pageTexts.join('\n\n')
       setExtractedText(extractedText)
-      const response = await fetch('http://localhost:5000/ask', {
+      const response = await fetch(getAskUrl(), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
