@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     return () => {
       if (documentRef.current) {
-        documentRef.current.destroy().catch(() => {})
+        documentRef.current.destroy().catch(() => { })
         documentRef.current = null
       }
     }
@@ -107,6 +107,14 @@ function App() {
     <div className="app-shell">
       <header className="topbar">
         <div className="brand">PDF AI Study</div>
+        <label className="pdf-upload">
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={handleUpload}
+          />
+          + New
+        </label>
       </header>
       <main className={`app-main ${isPdfViewerOpen ? 'layout-split' : 'layout-focus-right'}`}>
         <section className={`left-panel ${isPdfViewerOpen ? 'left-panel-open' : 'left-panel-collapsed'}`}>
@@ -121,16 +129,6 @@ function App() {
             pageCount={pageCount}
             pdfDocument={pdfDocument}
             onRenderError={setError}
-            uploadControl={
-              <label className="pdf-upload">
-                <input
-                  type="file"
-                  accept="application/pdf"
-                  onChange={handleUpload}
-                />
-                Upload PDF
-              </label>
-            }
           />
         </section>
 

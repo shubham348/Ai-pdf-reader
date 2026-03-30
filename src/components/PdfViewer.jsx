@@ -81,12 +81,10 @@ function PdfViewer({
   pageCount,
   pdfDocument,
   onRenderError,
-  uploadControl,
 }) {
   return (
     <CollapsiblePanel
       title="Document Viewer"
-      actions={uploadControl}
       className="viewer-shell"
       bodyClassName="viewer-content"
       defaultMobileOpen={false}
